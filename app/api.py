@@ -3,7 +3,7 @@ import http.client
 from flask import Flask
 
 from app import util
-from app.calc import Calculator
+from app.calc import Calculator, InvalidPermissions
 
 CALCULATOR = Calculator()
 api_application = Flask(__name__)

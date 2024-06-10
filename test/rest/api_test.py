@@ -31,7 +31,7 @@ class TestApi(unittest.TestCase):
         self.assertEqual(response.read().decode(), "2")
 
     def test_multiply_route(self):
-        url = f"{BASE_URL}calc/multiply/4/3"
+        url = f"{BASE_URL}/calc/multiply/4/3"
         try:
             # Realiza la solicitud al servidor
             response = urlopen(url, timeout=DEFAULT_TIMEOUT)

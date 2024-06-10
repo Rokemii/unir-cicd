@@ -32,9 +32,22 @@ class TestApi(unittest.TestCase):
 
     def test_multiply_route(self):
         url = f"{BASE_URL}/calc/multiply/4/3"
-        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
-        self.assertEqual(response.status, http.client.OK)
-        self.assertEqual(response.read().decode(), "12")
+        try:
+            # Realiza la solicitud al servidor
+            response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+            
+            # Lee y decodifica la respuesta
+            result = response.read().decode()
+
+            # Verifica el estado de la respuesta
+            self.assertEqual(response.status, http.client.OK)
+
+            # Verifica el resultado de la multiplicación
+            self.assertEqual(result, "12")
+        
+        except Exception as e:
+            # Si ocurre algún error durante la solicitud o la verificación, muestra el error
+            self.fail(f"Error durante la prueba: {e}")
 
     def test_divide_route(self):
         url = f"{BASE_URL}/calc/divide/8/2"

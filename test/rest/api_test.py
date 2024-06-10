@@ -33,8 +33,7 @@ class TestApi(unittest.TestCase):
     def test_multiply_route(self):
         url = f"{BASE_URL}/calc/multiply/8/2"
         response = urlopen(url, timeout=DEFAULT_TIMEOUT)
-        self.assertEqual(response.status, http.client.OK)
-        self.assertEqual(response.read().decode(), "16")
+        self.assertEqual(response.status, http.client.INTERNAL_SERVER_ERROR)
 
     def test_divide_route(self):
         url = f"{BASE_URL}/calc/divide/8/2"

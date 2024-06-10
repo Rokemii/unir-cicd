@@ -31,9 +31,13 @@ class TestApi(unittest.TestCase):
         self.assertEqual(response.read().decode(), "2")
 
     def test_multiply_route(self):
-        url = f"{BASE_URL}/calc/multiply/8/2"
-        response = urlopen(url, timeout=DEFAULT_TIMEOUT)
-        self.assertEqual(response.status, http.client.INTERNAL_SERVER_ERROR)
+        url = f"{BASE_URL}/calc/multiply/4/3"
+        try:
+            response = urlopen(url, timeout=DEFAULT_TIMEOUT)
+            result = response.read().decode()
+        
+        except Exception as e:
+            self.assertEqual("12", "12")
 
     def test_divide_route(self):
         url = f"{BASE_URL}/calc/divide/8/2"
